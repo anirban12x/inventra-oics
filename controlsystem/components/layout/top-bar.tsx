@@ -26,7 +26,7 @@ export function TopBar({ userName = "User", notifications = 5 }: TopBarProps) {
       <div className="h-full px-3 md:px-6 flex items-center justify-between">
         {/* Mobile Title / Welcome */}
         <div className="flex-1">
-          <div className="md:hidden">
+          <div className="md:hidden ml-16">
             <h1 className="text-lg font-semibold text-foreground">Inventra</h1>
           </div>
           <div className="hidden md:block">

@@ -80,16 +80,24 @@ export function Sidebar({ userRole = "Staff" }: SidebarProps) {
       {/* Mobile Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden fixed top-4 left-4 z-50 p-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg transition-all shadow-lg"
+        className="md:hidden fixed top-4 left-4 z-50 p-3 rounded-xl bg-white/90 border border-gray-300 text-gray-800 hover:bg-white hover:shadow-lg transition-all shadow-md backdrop-blur-sm"
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
-        {isOpen ? <X size={22} /> : <Menu size={22} />}
+        {isOpen ? <X size={22} className="text-gray-700" /> : <Menu size={22} className="text-gray-700" />}
       </button>
 
       {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-0 h-screen w-80 md:w-72 glass transform transition-all duration-300 ease-in-out md:translate-x-0 z-40 ${isOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed left-0 top-0 h-screen w-80 md:w-72 transform transition-all duration-300 ease-in-out md:translate-x-0 z-40 ${isOpen ? "translate-x-0" : "-translate-x-full"
           } ${isOpen ? "shadow-2xl" : ""}`}
+        style={{
+          background: isOpen
+            ? 'rgba(255, 255, 255, 0.95)'
+            : 'rgba(255, 255, 255, 0.8)',
+          backdropFilter: 'blur(12px)',
+          border: '1px solid rgba(0, 0, 0, 0.1)',
+          borderRadius: '0 16px 16px 0'
+        }}
       >
         <div className="p-4 md:p-6 h-full flex flex-col">
           {/* Logo */}
@@ -107,9 +115,9 @@ export function Sidebar({ userRole = "Staff" }: SidebarProps) {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 md:py-3 rounded-lg transition-all group text-sm md:text-base ${isActive(item.href)
-                    ? "bg-linear-to-r from-blue-500/30 to-purple-500/30 text-primary font-medium border border-blue-200/50"
-                    : "text-foreground hover:text-primary hover:bg-white/60 border border-transparent"
+                className={`flex items-center gap-3 px-4 py-3 md:py-3 rounded-lg transition-all group text-sm md:text-base touch-target tap-highlight ${isActive(item.href)
+                  ? "bg-linear-to-r from-blue-500/40 to-purple-500/40 text-primary font-medium border border-blue-300/60 shadow-sm"
+                  : "text-gray-700 hover:text-primary hover:bg-white/80 border border-transparent hover:border-gray-200/50"
                   }`}
               >
                 <span className={`${isActive(item.href) ? "text-primary" : "group-hover:text-primary"} shrink-0`}>
@@ -131,8 +139,12 @@ export function Sidebar({ userRole = "Staff" }: SidebarProps) {
       {/* Mobile Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/30 backdrop-blur-sm md:hidden z-30 transition-opacity duration-300"
+          className="fixed inset-0 bg-black/50 backdrop-blur-[2px] md:hidden z-30 transition-all duration-300"
           onClick={() => setIsOpen(false)}
+          style={{
+            background: 'rgba(0, 0, 0, 0.4)',
+            backdropFilter: 'blur(4px)'
+          }}
         />
       )}
     </>
