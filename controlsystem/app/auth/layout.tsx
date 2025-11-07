@@ -56,8 +56,8 @@ export default function AuthLayout({
         </div>
 
         {/* Right side - Form */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
-          <div className="w-full max-w-md space-y-8">
+        <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-4 md:py-8">
+          <div className="w-full max-w-md space-y-6 md:space-y-8">
             {children}
           </div>
         </div>

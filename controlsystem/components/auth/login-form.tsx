@@ -54,22 +54,26 @@ export function LoginForm() {
 
   return (
     <div className="w-full max-w-md">
-      <div className="glass p-8 space-y-6 animate-fade-in">
+      <div className="glass p-6 md:p-8 space-y-5 md:space-y-6 animate-fade-in">
         {/* Header */}
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h1 className="text-2xl md:text-3xl font-bold bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
             Inventra
           </h1>
           <p className="text-sm text-muted-foreground">Welcome back</p>
         </div>
 
         {/* Error Alert */}
-        {error && <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm">{error}</div>}
+        {error && (
+          <div className="p-3 rounded-lg bg-red-100 border border-red-300 text-red-800 text-sm font-medium">
+            {error}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email */}
           <div>
-            <label className="block text-sm font-medium mb-1">Email</label>
+            <label className="block text-sm font-medium mb-2 text-foreground">Email</label>
             <input
               type="email"
               name="email"
@@ -77,13 +81,13 @@ export function LoginForm() {
               onChange={handleChange}
               required
               placeholder="you@example.com"
-              className="w-full px-4 py-2 rounded-lg border border-border bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/80 text-foreground placeholder-muted-foreground focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
             />
           </div>
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-medium mb-1">Password</label>
+            <label className="block text-sm font-medium mb-2 text-foreground">Password</label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -92,14 +96,14 @@ export function LoginForm() {
                 onChange={handleChange}
                 required
                 placeholder="••••••••"
-                className="w-full px-4 py-2 rounded-lg border border-border bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 pr-12 rounded-lg border border-gray-300 bg-white/80 text-foreground placeholder-muted-foreground focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-2.5 text-muted-foreground hover:text-foreground"
+                className="absolute right-3 top-3.5 text-muted-foreground hover:text-foreground transition-colors"
               >
-                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
           </div>
@@ -108,7 +112,7 @@ export function LoginForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 px-4 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 px-4 rounded-lg bg-linear-to-r from-blue-600 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
@@ -116,15 +120,15 @@ export function LoginForm() {
 
         {/* Register Link */}
         <div className="text-center text-sm">
-          {"Don't have an account? "}
+          <span className="text-muted-foreground">{"Don't have an account? "}</span>
           <a href="/auth/register" className="text-primary hover:underline font-medium">
             Sign up
           </a>
         </div>
 
         {/* Demo Credentials */}
-        <div className="pt-4 border-t border-border/50">
-          <p className="text-xs text-muted-foreground font-medium mb-2">Demo Credentials:</p>
+        <div className="pt-4 border-t border-gray-200">
+          <p className="text-xs font-medium mb-2 text-foreground">Demo Credentials:</p>
           <p className="text-xs text-muted-foreground mb-1">Admin: admin1@inventra.com / admin123</p>
           <p className="text-xs text-muted-foreground">Staff: staff1@inventra.com / staff123</p>
         </div>

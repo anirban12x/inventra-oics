@@ -24,23 +24,23 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
   const items = activities || defaultActivities
 
   return (
-    <div className="glass p-6 space-y-3">
+    <div className="glass p-4 md:p-6 space-y-3">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-bold">Recent Activity</h3>
+        <h3 className="text-lg font-bold text-foreground">Recent Activity</h3>
         <a href="/notifications" className="text-xs text-primary hover:underline font-medium">
           View All
         </a>
       </div>
 
-      <div className="space-y-2 max-h-80 overflow-y-auto">
+      <div className="space-y-2 max-h-64 md:max-h-80 overflow-y-auto hide-scrollbar">
         {items.map((activity) => (
-          <div key={activity.id} className="flex items-start gap-3 p-3 rounded-lg hover:bg-white/30 transition-all">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex-shrink-0 flex items-center justify-center text-white text-xs font-medium">
+          <div key={activity.id} className="flex items-start gap-3 p-3 rounded-lg hover:bg-white/30 transition-all border border-transparent hover:border-white/20">
+            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-linear-to-r from-blue-500 to-purple-500 shrink-0 flex items-center justify-center text-white text-xs font-medium">
               {activity.user.charAt(0).toUpperCase()}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm">
-                <span className="font-medium">{activity.user}</span>{" "}
+              <p className="text-xs md:text-sm">
+                <span className="font-medium text-foreground">{activity.user}</span>{" "}
                 <span className="text-muted-foreground">{activity.action}</span>
               </p>
               <p className="text-xs text-muted-foreground mt-1">{activity.time}</p>

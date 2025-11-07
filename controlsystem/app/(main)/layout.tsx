@@ -55,10 +55,14 @@ export default function MainLayout({
     }
 
     return (
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-background overflow-x-hidden">
             <Sidebar userRole={user.role} />
             <TopBar userName={user.fullName} notifications={5} />
-            <main className="md:ml-72 mt-16 p-6">{children}</main>
+            <main className="md:ml-72 mt-16 p-3 md:p-6 mobile-container">
+                <div className="max-w-full overflow-x-hidden">
+                    {children}
+                </div>
+            </main>
         </div>
     )
 }
