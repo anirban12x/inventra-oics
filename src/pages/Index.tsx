@@ -81,13 +81,36 @@ const Index = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button variant="gradient" size="xl">
+              <Button
+                variant="gradient"
+                size="xl"
+                onClick={() => {
+                  const newTab = window.open("https://inventra-oics.vercel.app/", "_blank");
+                  if (newTab) newTab.focus();
+                }}
+              >
                 Start Your Free Trial <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Button variant="glass" size="xl">
-                Login Now
+
+              <Button
+                variant="glass"
+                size="xl"
+                className="hover:shadow-[0_0_30px_rgba(236,72,153,0.6),0_0_60px_rgba(236,72,153,0.3)] transition-all duration-1000"
+                style={{
+                  animation: 'pulse-glow 2s ease-in-out infinite',
+                }}
+                onClick={() => {
+                  const newTab = window.open("https://inventra-oics.vercel.app/", "_blank");
+                  if (newTab) newTab.focus();
+                }}
+              >
+                <span style={{ animation: 'color-shift 3s ease-in-out infinite', fontWeight: 'bold' }}>
+                  Login Now
+                </span>
+                <ArrowRight className="w-5 h-5 ml-2" style={{ animation: 'color-shift 3s ease-in-out infinite' }} />
               </Button>
             </div>
+
 
             <div className="flex items-center gap-6 pt-4">
               <div className="flex -space-x-3">
@@ -619,9 +642,19 @@ const Index = () => {
             <p className="text-xl text-white/90 max-w-2xl mx-auto">
               Get started in 5 minutes. No credit card required. Ever.
             </p>
-            <Button variant="glass" size="xl" className="bg-white text-primary hover:scale-110">
-              Start Your Free Trial Now <ArrowRight className="w-5 h-5 ml-2" />
+            <Button
+              variant="glass"
+              size="xl"
+              onClick={() => {
+                const newTab = window.open("https://inventra-oics.vercel.app/", "_blank");
+                if (newTab) newTab.focus();
+              }}
+            >
+              Start Your Free Trial <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
+
+
+
             <p className="text-sm text-white/80">Join 10,000+ Indian businesses already using Inventra</p>
           </div>
         </div>
