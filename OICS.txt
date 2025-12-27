@@ -1,0 +1,2 @@
+GITHUB - https://github.com/anirban12x/inventra-oics
+DEPLOYED LIVE LINK - https://inventra-management.vercel.app
